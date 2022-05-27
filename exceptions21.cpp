@@ -23,52 +23,77 @@ ImmutableStreamException::ImmutableStreamException(String messageIn) {
 
 
 
-Music21Exception::Music21Exception(String messageIn) : Exception(messageIn) {
+Music21Exception::Music21Exception(String theMessageIn, Adafruit_SPITFT *theOLEDIN, std::vector<Exception> theExceptionsListIN) : Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
+#ifdef Music21ScreenType
+    #if Music21ScreenType   == 0
+
+    #elif Music21ScreenType == 1
+    
+    #elif Music21ScreenType == 2
+    
+    #elif Music21ScreenType == 3
+    
+    #elif Music21ScreenType == 4
+    
+    #elif Music21ScreenType == 5
+    theScreen = (Adafruit_SSD1351*) theOLEDIN;
+    
+    #elif Music21ScreenType == 6
+    
+    #elif Music21ScreenType == 7
+    
+    #else
+        //error message
+    #endif
+
+#else
+    //error message
+#endif
 
 }
 
 
-StreamException::StreamException(String messageIn) : Music21Exception(messageIn) {
+StreamException::StreamException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
     
 }
 
-MetadataException::MetadataException(String messageIn) : Music21Exception(messageIn) {
+MetadataException::MetadataException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
     
 }
 
-AnalysisException::AnalysisException(String messageIn) : Music21Exception(messageIn) {
+AnalysisException::AnalysisException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-TreeException::TreeException(String messageIn) : Music21Exception(messageIn) {
+TreeException::TreeException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-InstrumentException::InstrumentException(String messageIn) : Music21Exception(messageIn) {
+InstrumentException::InstrumentException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-Music21CommonException::Music21CommonException(String messageIn) : Music21Exception(messageIn) {
+Music21CommonException::Music21CommonException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-CorpusException::CorpusException(String messageIn) : Music21Exception(messageIn) {
+CorpusException::CorpusException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-GroupException::GroupException(String messageIn) : Music21Exception(messageIn) {
+GroupException::GroupException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-MeterException::MeterException(String messageIn) : Music21Exception(messageIn) {
+MeterException::MeterException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-TimeSignatureException::TimeSignatureException(String messageIn) : Music21Exception(messageIn) {
+TimeSignatureException::TimeSignatureException(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 
-Music21DeprecationWarning::Music21DeprecationWarning(String messageIn) : Music21Exception(messageIn) {
+Music21DeprecationWarning::Music21DeprecationWarning(String messageIn) : Music21Exception(theMessageIn, theOLEDIN, theExceptionsListIN) {
 
 }
 /*

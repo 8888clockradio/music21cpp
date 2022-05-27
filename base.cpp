@@ -21,6 +21,11 @@ ElementWrapper::ElementWrapper() : Music21Object() {
 
 }
 
+
+Music21Object {
+    ProtoM21Object::ProtoM21Object();
+    __slots__.push_back({"Music21Object", typeid(Music21Object)});
+}
 /*
 '''
 `music21.base` is what you get in `music21` if you type ``import music21``. It

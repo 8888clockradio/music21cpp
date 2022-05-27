@@ -17,6 +17,9 @@ bool ProtoM21Object::areDisjoint(std::vector<String> set1, std::vector<String> s
 }
 
 ProtoM21Object::ProtoM21Object() {
+    __slots__.push_back({"ProtoM21Object", typeid(ProtoM21Object)});
+
+    
 }
 
 

@@ -16,21 +16,41 @@
 #include <teensy_sample_data.h>
 #include <teensy_synth_wavetable.h>
 #include <Easing.h>
-#include "config.h"
 #include <vector>
 #include <tuple>
+#include <iostream>
+#include <typeinfo>  //for 'typeid' to work  
 #include <map>
 
-typedef std::map<String, std::vector<String>> Dictionary;
+//https://www.delftstack.com/howto/cpp/cpp-create-a-dictionary/
+//https://stackoverflow.com/questions/1986418/typeid-versus-typeof-in-c
+
+using std::map;
+
+template<typename Map>
+
+struct StringDictionaryStruct {
+	map<String, type_info*>* theStringArray;
+	uint16_t theSizeOfArray;
+	uint16_t highLevelClassIDinArray;
+};
+
+struct StringArray {
+	String* theStringArray;
+	uint16_t theCountOfArray;
+	uint16_t highLevelClassIDinArray;
+};
 
 class ProtoM21Object {
 	public:
 		bool isClassOrSubclass(void classFilterListSequenceIn);
-		areDisjoint(std::vector<String> set1, std::vector<String> set2);
-		std::vector<String> classes();
-		std::vector<String> classSet();
+		areDisjoint(StringArray* set1, StringArray* set2);
+		StringArray* classes();
+		StringArray* classSet();
+		
+		std::vector<map<String, type_info*>>  __slots__ = {
+			{
 
-		std::vector<String> _classTupleCacheDict = {};
-		//_classSetCacheDict['dictname'] = {'Strings', 'String 2'};
-		std::vector<String> __slots__ = {};
-}
+			}
+		};
+};
